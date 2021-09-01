@@ -1,12 +1,12 @@
 # Football-Test
 
-Postman Doc : 
+Postman Doc : https://documenter.getpostman.com/view/406856/U16dSpHo
 
 1. Git clone the repo and run the following commands (make sure to create an .env file before : use the .env.dist as an example and modify values accordingly) :
     - composer install (install dependencies)
     - php bin/console doctrine:database:create (if not exists already)
     - php bin/console doctrine:schema:create
-    - php bin/console doctrine:fixtures:load (to load some basic data and create default user, see [This is a link] (src/DataFixtures/AppFixtures) for details)
+    - php bin/console doctrine:fixtures:load (to load some basic data and create default user, see src/DataFixtures/AppFixtures for details)
 
 2. Testing is made by phpUnit, make sure to run the following commands before testing (it will create a testing database) :
      - php bin/console doctrine:database:create --env=test
