@@ -7,6 +7,7 @@ use App\Service\TeamService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TeamsController extends
@@ -55,13 +56,7 @@ class TeamsController extends
                 $team
             );
         } catch (\Exception $e) {
-            return $this->json(
-                [
-                    'success' => false,
-                    'message' => $e->getMessage()
-                ],
-                $e->getCode()
-            );
+            throw new HttpException($e->getCode(), $e->getMessage());
         }
 
         //save
