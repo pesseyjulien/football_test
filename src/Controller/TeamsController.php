@@ -38,6 +38,8 @@ class TeamsController extends
                 $team->getName()
             );
 
+            //todo: league required or can be null ?
+
             //handle league
             if (empty($data['league'])) {
                 return $this->json(
@@ -125,13 +127,10 @@ class TeamsController extends
                 $team
             );
 
+            //handle league (switch //todo: be able to remove ?)
             if (!empty($data['league'])) {
-                $league = $team->getLeague();
-                if ($league) {
-                    $league->removeTeam(
-                        $team
-                    );
-                }
+                $team = $teamService->removeLeague($team);
+
                 $team = $teamService->addLeague(
                     $data,
                     $team

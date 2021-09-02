@@ -135,4 +135,20 @@ class TeamService
 
         return $team;
     }
+
+    /**
+     * @param Team $team
+     * @return Team
+     */
+    public function removeLeague(Team $team){
+
+        $league = $team->getLeague();
+        if ($league) {
+            $league->removeTeam(
+                $team
+            );
+        }
+
+        return $team;
+    }
 }
