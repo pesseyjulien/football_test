@@ -34,4 +34,15 @@ class LeaguesControllerTest extends JsonApiTestCase
         $this->assertResponseCode($response,Response::HTTP_OK);
     }
 
+    public function testDeleteLeague()
+    {
+        $this->client->request('DELETE', '/leagues/1', [], [], ['HTTP_AUTHORIZATION' => 'Bearer '.$this->token]);
+        $response = $this->client->getResponse();
+        $this->assertResponseCode($response, Response::HTTP_NOT_FOUND);
+
+        $this->client->request('DELETE', '/leagues/2', [], [], ['HTTP_AUTHORIZATION' => 'Bearer '.$this->token]);
+        $response = $this->client->getResponse();
+        $this->assertResponseCode($response,Response::HTTP_OK);
+    }
+
 }
