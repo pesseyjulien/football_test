@@ -54,20 +54,20 @@ class TeamsController extends
                 $data,
                 $team
             );
-
-            //save
-            $teamService->persist(
-                $team
-            );
         } catch (\Exception $e) {
             return $this->json(
                 [
                     'success' => false,
                     'message' => $e->getMessage()
                 ],
-                $e->getCode() != 0 ? $e->getCode() : 400
+                $e->getCode()
             );
         }
+
+        //save
+        $teamService->persist(
+            $team
+        );
 
         //return response
         $serializedEntity = $teamService->serializeTeam(
@@ -136,20 +136,20 @@ class TeamsController extends
                     $team
                 );
             }
-
-            //save
-            $teamService->persist(
-                $team
-            );
         } catch (\Exception $e) {
             return $this->json(
                 [
                     'success' => false,
                     'message' => $e->getMessage()
                 ],
-                $e->getCode() != 0 ? $e->getCode() : 400
+                $e->getCode()
             );
         }
+
+        //save
+        $teamService->persist(
+            $team
+        );
 
         //return response
         $serializedEntity = $teamService->serializeTeam(

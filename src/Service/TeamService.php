@@ -101,6 +101,7 @@ class TeamService
 
     /**
      * @param $name
+     * @return false
      * @throws \Exception
      */
     public function checkDuplicate(
@@ -111,6 +112,8 @@ class TeamService
             throw new \Exception('Team with same name already exists',
                 Response::HTTP_CONFLICT);
         }
+
+        return false;
     }
 
     /**
@@ -140,8 +143,9 @@ class TeamService
      * @param Team $team
      * @return Team
      */
-    public function removeLeague(Team $team){
-
+    public function removeLeague(
+        Team $team
+    ) {
         $league = $team->getLeague();
         if ($league) {
             $league->removeTeam(
